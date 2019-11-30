@@ -1,1 +1,1 @@
-web: gunicorn dpkg_controller.py --log-file -
+web: gunicorn dpkg_controller:application --log-file -
