@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% block title %} Package info {% endblock %}
+{% block body %}
+<h4>Package: {{ package_name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ url_for('landing_page') }}">Go back to home page</a></h4><br><br>
+<div class="col-5">
+    <p style="color:gray">
+        {% for line in package_info['description'] %}
+            {{ line }}<br>
+        {% endfor %}
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <h3>Dependencies</h3>
+        <ul>
+            {% for package_dependency in package_info['depends'] %}
+            <li><a href="{{ url_for('package_routes', package_name=package_dependency) }}">{{ package_dependency }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-3">
+        <h3>Reverse-dependencies</h3>
+        <ul>
+            {% for package_dependent in package_info['reverse-depends'] %}
+            <li><a href="{{ url_for('package_routes', package_name=package_dependent) }}">{{ package_dependent }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
