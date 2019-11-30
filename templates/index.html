@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
     <title>{% block title %}dpkg status Navigator{% endblock %}</title>
 </head>
 
 <body>
 {% block body %}
-<h3>Packages found</h3><br><br>
-<!--    <div class="container">-->
-        <div class="row">
-                <div class="col-3">
-                    <div class="list-group">
-                        {% for package_name in package_names %}
-                            <a href="{{ url_for('package_routes', package_name=package_name) }}"
-                               class="list-group-item list-group-item-action">{{ loop.index}}. {{ package_name }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
+<h3>Packages found:</h3><br>
+<a href="https://github.com/nicolaskyejo/dpkg_dependency">Source code</a><br>
+<div class="row">
+        <div class="col-3">
+            <div class="list-group">
+                {% for package_name in package_names %}
+                    {% if loop.index % 2 == 0 %}
+                    <a href="{{ url_for('package_routes', package_name=package_name) }}"
+                        class="list-group-item list-group-item-action active">{{ loop.index}}. {{ package_name }}</a>
+                    {% else %}
+                    <a href="{{ url_for('package_routes', package_name=package_name) }}"
+                        class="list-group-item list-group-item-action">{{ loop.index}}. {{ package_name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-<!--    </div>-->
+</div>
 {% endblock %}
 </body>
 </html>

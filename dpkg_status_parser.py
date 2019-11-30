@@ -14,7 +14,7 @@ def dpkg_parser(file=dpkg_status_file_path):
        and returns a sorted dictionary with package name as the key,
        and {dependency, reverse-dependency, description} as the value
     """
-    with open(file, 'r') as f:
+    with open(file, 'r', encoding='utf8') as f:
         package_info = {}
         content = f.read()
         sections = content.split('\n\n')
@@ -60,4 +60,4 @@ def dpkg_parser(file=dpkg_status_file_path):
 
 
 if __name__ == '__main__':
-    dpkg_parser()
+    print(dpkg_parser())
