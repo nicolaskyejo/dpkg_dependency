@@ -22,8 +22,8 @@
     <div class="col-3">
         <h3>Reverse-dependencies</h3>
         <ul>
-            {% for package_dependent in package_info['reverse-depends'] %}
-            <li><a style="color:cornflowerblue" href="{{ url_for('package_routes', package_name=package_dependent) }}">{{ package_dependent }}</a></li>
+            {% for package_reverse_dependency in package_info['reverse-depends'] %}
+            <li><a style="color:cornflowerblue" href="{{ url_for('package_routes', package_name=package_reverse_dependency) }}">{{ package_reverse_dependency }}</a></li>
             {% endfor %}
         </ul>
     </div>
