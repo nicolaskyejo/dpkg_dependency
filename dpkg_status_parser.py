@@ -41,6 +41,8 @@ def dpkg_parser(string=file_opener()):
             if line.startswith(" /"):  # skip
                 continue
             if line.startswith(" "):
+                if line.startswith(" ."):
+                    line = ""
                 description.append(line)
                 continue
             if line.startswith("Depends") or line.startswith("Pre-Depends"):

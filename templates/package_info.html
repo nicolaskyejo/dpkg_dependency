@@ -5,7 +5,11 @@
 <div class="col-5">
     <p style="color:gray">
         {% for line in package_info['description'] %}
-            {{ line }}<br>
+            {% if loop.first %}
+                <b>{{ line }}</b><br><br>
+            {% else %}
+                {{ line }}<br>
+            {% endif %}
         {% endfor %}
     </p>
 </div>
